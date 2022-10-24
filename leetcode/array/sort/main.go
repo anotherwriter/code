@@ -30,8 +30,8 @@ func insertSort(nums []int) {
 }
 
 func swapSort(nums []int) {
-	for i := 0; i < len(nums)-1; i++ {
-		for j := i + 1; j < len(nums); j++ {
+	for i := 0; i < len(nums)-1; i++ { // nums - 1 times sort
+		for j := i + 1; j < len(nums); j++ { // nums[i] is minimum after comparing nums[i] with nums[i+1,...]
 			if nums[i] > nums[j] {
 				nums[i], nums[j] = nums[j], nums[i]
 			}
@@ -40,8 +40,8 @@ func swapSort(nums []int) {
 }
 
 func bubbleSort(nums []int) {
-	for i := 0; i < len(nums)-1; i++ {
-		for j := 0; j < len(nums)-i-1; j++ {
+	for i := 0; i < len(nums)-1; i++ { // nums - 1 times sort
+		for j := 0; j < len(nums)-i-1; j++ { // nums[len-i-1] is maximum after comparing
 			if nums[j] > nums[j+1] {
 				nums[j], nums[j+1] = nums[j+1], nums[j]
 			}

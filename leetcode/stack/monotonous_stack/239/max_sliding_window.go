@@ -28,11 +28,12 @@ import (
 )
 
 func main() {
-	fmt.Println(maxSlidingWindow([]int{1, 3, -1, -3, 5, 3, 6, 7}, 3))
-	fmt.Println(maxSlidingWindow([]int{7, 2, 4}, 2))
+	fmt.Println(maxSlidingWindow2([]int{1, 3, -1, -3, 5, 3, 6, 7}, 3))
+	fmt.Println(maxSlidingWindow2([]int{7, 2, 4}, 2))
 }
 
 // based on sort
+// O(n * klogk) O(k)
 func maxSlidingWindow(nums []int, k int) []int {
 	window := make([]int, k)
 
@@ -48,7 +49,8 @@ func maxSlidingWindow(nums []int, k int) []int {
 	return result
 }
 
-// based on queue
+// based on monotonous decreasing stack
+// O(n) O(k)
 // https://leetcode.cn/problems/sliding-window-maximum/solutions/543426/hua-dong-chuang-kou-zui-da-zhi-by-leetco-ki6m/
 func maxSlidingWindow2(nums []int, k int) []int {
 	indexQueue := make([]int, 0, k)
@@ -67,6 +69,7 @@ func maxSlidingWindow2(nums []int, k int) []int {
 	n := len(nums)
 	result := make([]int, 1, n-k+1)
 	result[0] = nums[indexQueue[0]]
+
 	for i := k; i < n; i++ {
 		push(i)
 		for indexQueue[0] <= i-k {
